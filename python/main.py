@@ -2,37 +2,37 @@ import time
 import os
 import random
 
-# Initialize a 3x3 grid for Tic-Tac-Toe
+#^ Initialize a 3x3 grid for Tic-Tac-Toe
 grid = [[' ' for _ in range(3)] for _ in range(3)]
 
-# Add 'X' to the top-left corner
+#^ Add 'X' to the top-left corner
 #^ this is our main logic grid[0][0] = 'X'
 
 def welcome_message():
-    # Define the welcome message
+    #^ Define the welcome message
     message = "----Welcome to Tic-Tac-Toe----"
     
-    # Print each character of the message with a short delay
+    #* Print each character of the message with a short delay
     for char in message:
         print(char, end='', flush=True)
-        time.sleep(0.05)  # Reduced delay for faster printing
+        time.sleep(0.05)  # * Reduced delay for faster printing
     
-    # Blink the message twice
+    #* Blink the message twice
     for _ in range(2):
-        # Clear the message by overwriting with spaces
+        #* Clear the message by overwriting with spaces
         print('\r' + ' ' * len(message), end='', flush=True)
-        time.sleep(0.25)  # Reduced delay for faster blinking
+        time.sleep(0.25)  # * Reduced delay for faster blinking
         
-        # Print the message again
+        #* Print the message again
         print('\r' + message, end='', flush=True)
-        time.sleep(0.25)  # Reduced delay for faster blinking
+        time.sleep(0.25)  # * Reduced delay for faster blinking
     
-    # Move to the next line after the message
+    #* Move to the next line after the message
     print()
 
 
 def minimax(board, depth, is_maximizing):
-    # Check for terminal states
+    #^ Check for terminal states
     winner = check_winner(board)
     if winner == 'X':
         return -1
@@ -78,16 +78,23 @@ def best_move():
         grid[move[0]][move[1]] = 'O'
 
 def check_winner(board):
-    # Check rows, columns, and diagonals for a winner
+    #^ Check rows for a winner
     for i in range(3):
         if board[i][0] == board[i][1] == board[i][2] != ' ':
             return board[i][0]
+    
+    #^ Check columns for a winner
+    for i in range(3):
         if board[0][i] == board[1][i] == board[2][i] != ' ':
             return board[0][i]
+    
+    #^ Check diagonals for a winner
     if board[0][0] == board[1][1] == board[2][2] != ' ':
         return board[0][0]
     if board[0][2] == board[1][1] == board[2][0] != ' ':
         return board[0][2]
+    
+    #^ No winner found
     return None
 
 def is_board_full(board):
@@ -98,8 +105,8 @@ def is_board_full(board):
 
 def print_grid():
     for row in grid:
-        print('|'.join(row))
-        print('-' * 5)
+        print(' | '.join(row))
+        print('-' * 9)
 
 def main():
     welcome_message()
@@ -149,7 +156,7 @@ def main():
                 except (ValueError, IndexError):
                     print("Invalid input. Please enter row and column numbers (1, 2, or 3) separated by space.")
 
-        #os.system('cls' if os.name == 'nt' else 'clear')
+        os.system('cls' if os.name == 'nt' else 'clear')
         print_grid()
         current_player = 'O' if current_player == 'X' else 'X'
 
