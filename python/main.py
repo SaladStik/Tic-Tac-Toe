@@ -112,6 +112,7 @@ def print_grid():
 
 
 def main():
+    welcome_message()
     global visualizeAI
     while True:
         game_mode = input("Do you want to play against another player or the AI? (Enter 'player' or 'AI'): ").strip().lower()
