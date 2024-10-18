@@ -149,7 +149,7 @@ def main():
                 except (ValueError, IndexError):
                     print("Invalid input. Please enter row and column numbers (1, 2, or 3) separated by space.")
 
-        os.system('cls' if os.name == 'nt' else 'clear')
+        #os.system('cls' if os.name == 'nt' else 'clear')
         print_grid()
         current_player = 'O' if current_player == 'X' else 'X'
 
